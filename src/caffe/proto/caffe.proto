@@ -421,6 +421,23 @@ message LayerParameter {
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
   optional WindowDataParameter window_data_param = 129;
+  optional UpsampleParameter upsample_param = 149;
+  optional MishParameter mish_param = 150;
+}
+
+// added by chen for YoloV3
+message UpsampleParameter{
+  optional int32 scale = 1 [default = 1];
+}
+
+// Message that stores parameters used by MishLayer
+message MishParameter {
+  enum Engine {
+    DEFAULT = 0;
+    CAFFE = 1;
+    CUDNN = 2;
+  }
+  optional Engine engine = 2 [default = DEFAULT];
 }
 
 // Message that stores parameters used to apply transformation
